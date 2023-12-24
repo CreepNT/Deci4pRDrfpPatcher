@@ -25,15 +25,29 @@ target_link_libraries(${PROJECT_NAME}
   SceIofilemgrForDriver_stub
   SceSysclibForDriver_stub
   SceDebugForDriver_stub
+  SceCpuForDriver_stub
   taihenForKernel_stub
   taihenModuleUtils_stub
 )
+
+if (BUILD_363)
+  target_link_libraries(${PROJECT_NAME}
+    SceModulemgrForKernel_363_stub
+  )
+  message("Building for 3.63+ System Software")
+  set(ARTIFACT_SUFFIX "_363")
+else()
+  target_link_libraries(${PROJECT_NAME}
+    SceModulemgrForKernel_stub
+  )
+  message("Building for pre-3.63 System Software")
+endif()
 
 set_target_properties(${PROJECT_NAME}
   PROPERTIES LINK_FLAGS "-nostdlib"
 )
 
-vita_create_self(${PROJECT_NAME}.skprx ${PROJECT_NAME}
+vita_create_self(${PROJECT_NAME}${ARTIFACT_SUFFIX}.skprx ${PROJECT_NAME}
   CONFIG module.yml
   UNSAFE
 )

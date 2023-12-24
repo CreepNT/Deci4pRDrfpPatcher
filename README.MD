@@ -6,5 +6,10 @@ This module is used in conjunction with the PlayStation®️ File System Driver 
 
 # Features
 
-* Replaces the seldom used `Vita Card` mountpoint with `os0` (can be customized)
-* Forces kernel impersonation for all accesses to unlock the full filesystem (no more hidden files!)
+* Makes 'all' mountpoints available from PC
+* Unlock the full filesystem by impersonating kernel for all accesses
+* Fixes bugs related to mismatch between Windows and PS Vita permissions
+
+# Credits
+
+* [@Princess-of-Sleeping](https://github.com/Princess-of-Sleeping) for the improved code
